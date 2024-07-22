@@ -1,7 +1,7 @@
 #============================================================================
 # bandwidth, a benchmark to estimate memory bandwidth.
 #
-# 64-bit LOONGARCH64 (loongarch64) routines.
+# 64-bit LOONGARCH (loongarch64) routines.
 #
 # Copyright (C) 2023 by Zack T Smith.
 #
@@ -67,8 +67,8 @@
 #-----------------------------------------------------------------------------
 .align 4
 Writer:
-	srli.w 	$a0, $a0, 4
-	slli.w 	$a0, $a0, 4
+	srli.d 	$a0, $a0, 4
+	slli.d 	$a0, $a0, 4
 	
 	addi.d	$t0, $a0, 0
 	addi.d	$t1, $a1, 0
@@ -154,7 +154,7 @@ RandomWriter:
 
 .Lrw1:
 	## Get pointer to chunk in memory.
-	slli.w	$t0, $a5, 3
+	slli.d	$t0, $a5, 3
 	add.d	$t0, $t0, $a0
 	ld.d	$a4, $t0, 0
 
@@ -295,7 +295,7 @@ RandomReader:
 
 .Lrr1:
 	# Get pointer to chunk in memory.
-	slli.w	$t0, $a5, 3
+	slli.d	$t0, $a5, 3
 	add.d	$t0, $t0, $a0
 	ld.d	$a4, $t0, 0
 
@@ -843,7 +843,7 @@ VectorToVector256:
 .align 4
 loongarch64_getcpu:
 	# li	$a7, 345 # syscall number
-	syscall 168
+	syscall 345
 	ret
 
 
