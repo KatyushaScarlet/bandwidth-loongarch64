@@ -842,8 +842,7 @@ VectorToVector256:
 #-----------------------------------------------------------------------------
 .align 4
 loongarch64_getcpu:
-	# li	$a7, 345 # syscall number
-	syscall 345
+	syscall 345 # syscall number
 	ret
 
 
